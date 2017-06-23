@@ -71,7 +71,8 @@ CREATE TABLE "public"."tbl_users" (
 "email" varchar(100) COLLATE "default",
 "status" bool,
 "user_hash" varchar(100) COLLATE "default",
-"user_role" int4
+"user_role" int4,
+"create_date" date DEFAULT ('now'::text)::date
 )
 WITH (OIDS=FALSE)
 
