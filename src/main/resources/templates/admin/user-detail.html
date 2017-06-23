@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="/admin/admin-layout">
+<meta charset="ISO-8859-1">
+<title>User Detail</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="panel panel-primary">
+			<fieldset>
+				<legend align="center" style="padding:20px;font-size:30px;" th:utext="#{user.detail.detail}">User Detail</legend>
+				<div th:object="${USER}" style="padding:30px;">
+					<p style="font-size:20px;"><span th:utext="#{user.name.detail}">User Name : </span>&nbsp;&nbsp;&nbsp;<span th:text="*{name}"></span></p>
+					<p style="font-size:20px;"><span th:utext="#{user.gender.detail}">Gender : </span>&nbsp;&nbsp;&nbsp;<span th:text="*{gender}"></span></p>
+					<p style="font-size:20px;"><span th:utext="#{user.phone.detail}">Phone Number : </span>&nbsp;&nbsp;&nbsp;<span th:text="*{phone}"></span></p>
+					<p style="font-size:20px;"><span th:utext="#{user.email.detail}">Email : </span>&nbsp;&nbsp;&nbsp;<span th:text="*{email}"></span></p>
+				</div>
+			</fieldset>
+		</div>
+	</div>
+</body>
+</html>

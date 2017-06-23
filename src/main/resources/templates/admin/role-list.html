@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="/admin/admin-layout">
+<head>
+<meta charset="ISO-8859-1">
+<title>Role List</title>
+<style type="text/css">
+	tr{
+		transition:.6s;
+	}
+	tr:hover:not(.tr-head){
+		background:#000;
+		color:#fff;
+		cursor:pointer;
+	}
+	th,td{
+		text-align:left;
+	}
+	th:first-child,td:first-child{
+		text-align:center;
+	}
+</style>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="btn-group btn-group-justified">
+           <div class="btn-group">
+                <a th:href="@{/admin/role-form}" class="btn btn-primary" style="width:130px;" th:utext="#{btn.add.role}"><i class="icon-ccw-1"></i> Add Role</a>
+           </div>
+        </div>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr class="tr-head">
+						<th th:utext="#{role.id}">Role ID</th>
+						<th th:utext="#{role.name}">Role Name</th>
+						<th th:utext="#{role.desc}">Description</th>
+						<th colspan="2" th:utext="#{role.command}">Command</th>
+					</tr>
+				</thead>
+										
+				<tbody>
+					<tr th:each="role:${ROLE}">
+						<td th:text="${role.id}"  style="width:70px;">ID</td>
+						<td th:text="${role.roleName}">User Name</td>
+						<td th:text="${role.description}">Gender</td>	
+						<td style="width:70px;">
+							<a th:href="@{/admin/delete-role(roleHash=${role.role_hash})}" th:utext="#{role.del}">Delete</a>
+						</td>
+						<td style="width:70px;">
+							<a th:href="@{/admin/role-update-form/{roleHash}(roleHash=${role.role_hash})}" th:utext="#{role.update}">Update</a>
+						</td>	
+					</tr>					
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="/admin/admin-layout">
+<head>
+<meta charset="ISO-8859-1">
+<title>Create and Update User</title>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="widget-content padding">
+			<form class="form-horizontal" role="form" th:object="${USER}" method="POST" th:action="@{${ACTION}}">
+				<input type="hidden" th:field="*{userHash}">
+				<div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label" th:utext="#{user.name}">User Name</label>
+						<div class="col-sm-10">
+							  <input type="text" class="form-control"  placeholder="User Name" th:field="*{name}" required="required">
+						</div>
+				</div>
+				<div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label" th:utext="#{user.gender}">Gender</label>
+						<div class="col-sm-10">
+							  <select class="form-control" th:field="*{gender}">
+							  		<option value="Male">Male</option>
+							  		<option value="Female">Female</option>
+							  </select>
+						</div>
+				</div>
+				<div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label" th:utext="#{user.email}">Email</label>
+						<div class="col-sm-10">
+							  <input type="email" class="form-control"  placeholder="Email" th:field="*{email}">
+						</div>
+				</div>
+				<div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label" th:utext="#{user.phone}">Phone</label>
+						<div class="col-sm-10">
+							  <input type="text" class="form-control"  placeholder="Phone" th:field="*{phone}">
+						</div>
+				</div>
+				<div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label" th:utext="#{user.role}">Role</label>
+						<div class="col-sm-10">
+							  <select class="form-control" th:field="*{role.id}">
+							  		<option th:each="role : ${ROLE}" th:value="${role.id}" th:text="${role.roleName}">Owner</option>
+							  </select>
+						</div>
+				</div>
+				<div class="form-group" style="text-align:right;">
+				      <button class="btn btn-primary" type="submit"  style="margin-right:15px;">
+				      	<span class="glyphicon glyphicon-ok" arial-label="true" th:utext="#{btn.save.user}">Save User</span>
+				      </button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

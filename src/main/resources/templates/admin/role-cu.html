@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="/admin/admin-layout">
+<head>
+<meta charset="ISO-8859-1">
+<title>Create Update Role</title>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="widget-content padding">
+			<form class="form-horizontal" role="form" th:object="${ROLE}" method="POST" th:action="@{${ACTION}}">
+				<input type="hidden" th:field="*{role_hash}">
+				
+				<div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label" th:utext="#{role.name}">Role Name</label>
+						<div class="col-sm-10">
+							  <input type="text" class="form-control"  placeholder="Role Name" th:field="*{roleName}" required="required">
+						</div>
+				</div>
+				
+				<div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label" th:utext="#{role.desc}">Description</label>
+						<div class="col-sm-10">
+							  <input type="text" class="form-control"  placeholder="Description" th:field="*{description}">
+						</div>
+				</div>
+				
+	
+				<div class="form-group" style="text-align:right;">
+				      <button class="btn btn-primary" type="submit" value="Save Role" style="margin-right:15px;">
+				      	<span class="glyphicon glyphicon-ok" arial-label="true" th:utext="#{btn.save.role}"> Save Role</span>
+				     
+				      </button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

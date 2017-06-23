@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="/admin/admin-layout">
+<head>
+<meta charset="ISO-8859-1">
+<title>User List</title>
+<style type="text/css">
+	tr{
+		transition:.6s;
+	}
+	tr:hover:not(.tr-head){
+		background:#000;
+		color:#fff;
+		cursor:pointer;
+	}
+	th,td{
+		text-align:center;
+	}
+</style>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="btn-group btn-group-justified">
+           <div class="btn-group">
+                <a th:href="@{/admin/user-form}" class="btn btn-primary" style="width:130px;"​ th:utext="#{btn.add.user}"><i class="icon-ccw-1"></i> Add User</a>
+           </div>
+           <div style="float: right;width:300px;">
+	           	<form role="search" class="navbar-form" th:action="@{/admin/search-user}">
+	                 <div class="form-group">
+	                     <input type="text" placeholder="Search" name="idorname" class="form-control">
+	                     <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+	                 </div>
+	             </form>
+           </div>
+        </div>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr class="tr-head">
+						<th​ th:utext="#{user.id}">ID</th>
+						<th th:utext="#{user.name}">User Name</th>
+						<th th:utext="#{user.gender}">Gender</th>
+						<th th:utext="#{user.phone}">Phone</th>
+						<th th:utext="#{user.email}">Email</th>
+						<th th:utext="#{user.status}">Status</th>
+						<th th:utext="#{user.role}">Role</th>
+						<th colspan="3" th:utext="#{user.command}">Command</th>
+					</tr>
+				</thead>									
+				<tbody>
+					<tr th:each="user:${USER}">
+						<td th:text="${user.id}"  style="width:70px;">ID</td>
+						<td th:text="${user.name}">User Name</td>
+						<td th:text="${user.gender}">Gender</td>
+						<td th:text="${user.phone}">Phone</td>
+						<td style="text-align:center;">
+							<a th:href="'mailto:'+${user.email}" th:text="${user.email}">Email</a>
+						</td>
+						<td th:text="${user.status}">Status</td>	
+						<td th:text="${user.role.roleName}">Role</td>	
+						
+						<td style="width:70px;">
+							<a th:href="@{/admin/delete-user(userHash=${user.userHash})}" th:utext="#{user.del}">Delete</a>
+						</td>
+						<td style="width:70px;">
+							<a th:href="@{/admin/user-update-form/{userHash}(userHash=${user.userHash})}" th:utext="#{user.update}">Update</a>
+						</td>
+						<td style="width:70px;">
+							<a th:href="@{/admin/user-detail/{userHash}(userHash=${user.userHash})}" th:utext="#{user.detail}">Detail</a>
+						</td>	
+					</tr>					
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

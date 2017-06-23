@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
+    <title layout:title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE">Coco ltd</title>   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="">
+    <meta name="keywords" content="coco bootstrap template, coco admin, bootstrap,admin template, bootstrap admin,">
+    <meta name="author" content="Huban Creative">
+	<style type="text/css">
+		.khmer-font{
+			font-family: 'Khmer OS Battambang';
+			font-size: 14px;
+		}
+		.selected-language{
+			color:red;
+			font-weight: bold;
+		}
+	</style>
+	
+	<style th:replace="/admin/shared/_style"></style>
+	
+</head>
+<body class="fixed-left">
+	<div id="wrapper">
+		<div th:replace="/admin/shared/_header"></div>
+		<div th:replace="/admin/shared/_left-side-bar"></div>
+		<div th:replace="/admin/shared/_right-side-bar"></div>
+		<div class="content-page">
+			<div layout:fragment="content" class="content"></div>
+		</div>
+		<div th:replace="/admin/shared/_footer"></div>
+	</div>
+	<div th:replace="/admin/shared/_script"></div>
+</body>
+</html>
